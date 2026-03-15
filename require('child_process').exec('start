@@ -1,0 +1,49 @@
+[2] [eval]:1
+[2] setTimeout(()= http://localhost:3000'), 3500)
+[2]             ^
+[2] 
+[2] SyntaxError: Unexpected token ')'
+[2]     at makeContextifyScript (node:internal/vm:185:14)
+[2]     at node:internal/process/execution:107:22
+[2]     at [eval]-wrapper:6:24
+[2]     at runScript (node:internal/process/execution:101:62)
+[2]     at evalScript (node:internal/process/execution:136:3)
+[2]     at node:internal/main/eval_string:51:3
+[2] 
+[2] Node.js v22.2.0
+[2] node -e "setTimeout(()= http://localhost:3000'), 3500)" exited with code 1
+[0] 
+[0] > backend@1.0.0 dev
+[0] > nodemon src/server.ts
+[0] 
+[1] 
+[1] > frontend@0.1.0 dev
+[1] > node -e "require('fs').rmSync('.next', { force: true, recursive: true })" && next dev
+[1] 
+[0] [33m[nodemon] 3.1.14[39m
+[0] [33m[nodemon] to restart at any time, enter `rs`[39m
+[0] [33m[nodemon] watching path(s): *.*[39m
+[0] [33m[nodemon] watching extensions: ts,json[39m
+[0] [32m[nodemon] starting `ts-node src/server.ts`[39m
+[1] ⚠ Warning: Next.js inferred your workspace root, but it may not be correct.
+[1]  We detected multiple lockfiles and selected the directory of C:\Users\Vinutha\package-lock.json as the root directory.
+[1]  To silence this warning, set `turbopack.root` in your Next.js config, or consider removing one of the lockfiles if it's not needed.
+[1]    See https://nextjs.org/docs/app/api-reference/config/next-config-js/turbopack#root-directory for more information.
+[1]  Detected additional lockfiles: 
+[1]    * C:\Users\Vinutha\Desktop\learn-flow\frontend\package-lock.json
+[1]    * C:\Users\Vinutha\Desktop\learn-flow\package-lock.json
+[1] 
+[1] ▲ Next.js 16.1.6 (Turbopack)
+[1] - Local:         http://localhost:3000
+[1] - Network:       http://192.168.0.8:3000
+[1] 
+[1] ✓ Starting...
+[0] [dotenv@17.3.1] injecting env (6) from .env -- tip: 🔐 encrypt with Dotenvx: https://dotenvx.com
+[1] ✓ Ready in 2s
+[0] Connected to MySQL DB
+[0] Server is running on port 3001
+[0] Terminate batch job (Y/N)? 
+[1] Terminate batch job (Y/N)? 
+[0] npm run dev --prefix backend exited with code 1
+[1] [?25h
+[1] npm run dev --prefix frontend exited with code 1

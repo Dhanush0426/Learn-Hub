@@ -1,0 +1,54 @@
+
+> frontend@0.1.0 dev
+> node -e "require('fs').rmSync('.next', { force: true, recursive: true })" && next dev
+
+ΓÜá Warning: Next.js inferred your workspace root, but it may not be correct.
+ We detected multiple lockfiles and selected the directory of C:\Users\Vinutha\package-lock.json as the root directory.
+ To silence this warning, set `turbopack.root` in your Next.js config, or consider removing one of the lockfiles if it's not needed.
+   See https://nextjs.org/docs/app/api-reference/config/next-config-js/turbopack#root-directory for more information.
+ Detected additional lockfiles: 
+   * C:\Users\Vinutha\Desktop\learn-flow\frontend\package-lock.json
+   * C:\Users\Vinutha\Desktop\learn-flow\package-lock.json
+
+Γû▓ Next.js 16.1.6 (Turbopack)
+- Local:         http://localhost:3000
+- Network:       http://192.168.0.8:3000
+
+Γ£ô Starting...
+Γ£ô Ready in 1560ms
+ GET / 200 in 3.1s (compile: 2.9s, render: 243ms)
+ GET /dashboard 200 in 1081ms (compile: 1030ms, render: 51ms)
+ GET /login 200 in 1099ms (compile: 963ms, render: 135ms)
+ GET /courses 200 in 468ms (compile: 429ms, render: 39ms)
+ GET /my-courses 200 in 440ms (compile: 408ms, render: 31ms)
+ GET /my-courses 200 in 30ms (compile: 5ms, render: 25ms)
+ GET /quiz 200 in 415ms (compile: 381ms, render: 34ms)
+ GET /quiz 200 in 158ms (compile: 6ms, render: 152ms)
+ GET /login 200 in 49ms (compile: 10ms, render: 39ms)
+Γ¿» Error: ENOENT: no such file or directory, open 'C:\Users\Vinutha\Desktop\learn-flow\frontend\.next\dev\build-manifest.json'
+    at ignore-listed frames {
+  errno: -4058,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: 'C:\\Users\\Vinutha\\Desktop\\learn-flow\\frontend\\.next\\dev\\build-manifest.json',
+  page: '/'
+}
+ GET / 500 in 1800ms (compile: 1531ms, render: 269ms)
+ GET / 200 in 54ms (compile: 8ms, render: 46ms)
+ GET /login 200 in 88ms (compile: 6ms, render: 81ms)
+ GET /dashboard 200 in 53ms (compile: 5ms, render: 48ms)
+ GET /login 200 in 106ms (compile: 5ms, render: 101ms)
+ GET /login 200 in 63ms (compile: 7ms, render: 57ms)
+ GET /login 200 in 57ms (compile: 5ms, render: 52ms)
+ GET /dashboard 200 in 34ms (compile: 6ms, render: 28ms)
+ GET /courses 200 in 24ms (compile: 4ms, render: 19ms)
+ GET /my-courses 200 in 28ms (compile: 4ms, render: 23ms)
+ GET /assignments 200 in 416ms (compile: 383ms, render: 33ms)
+ GET /quiz 200 in 30ms (compile: 5ms, render: 26ms)
+ GET /dashboard 200 in 27ms (compile: 4ms, render: 22ms)
+ GET /courses 200 in 23ms (compile: 4ms, render: 19ms)
+ GET /dashboard 200 in 23ms (compile: 5ms, render: 17ms)
+ GET /my-courses 200 in 23ms (compile: 4ms, render: 19ms)
+ GET /courses 200 in 22ms (compile: 4ms, render: 18ms)
+ GET /assignments 200 in 21ms (compile: 4ms, render: 18ms)
+ GET /quiz 200 in 22ms (compile: 4ms, render: 18ms)

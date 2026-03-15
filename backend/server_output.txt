@@ -1,0 +1,17 @@
+[dotenv@17.3.1] injecting env (0) from .env -- tip: ≡ƒñû agentic secret storage: https://dotenvx.com/as2
+Failed to connect to database Error: Access denied for user 'root'@'localhost' (using password: NO)
+    at PromisePool.query (C:\Users\Vinutha\Desktop\learn-flow\backend\node_modules\mysql2\lib\promise\pool.js:36:22)
+    at startServer (C:\Users\Vinutha\Desktop\learn-flow\backend\dist\server.js:12:28)
+    at Object.<anonymous> (C:\Users\Vinutha\Desktop\learn-flow\backend\dist\server.js:23:1)
+    at Module._compile (node:internal/modules/cjs/loader:1434:14)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1518:10)
+    at Module.load (node:internal/modules/cjs/loader:1249:32)
+    at Module._load (node:internal/modules/cjs/loader:1065:12)
+    at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:158:12)
+    at node:internal/main/run_main_module:30:49 {
+  code: 'ER_ACCESS_DENIED_ERROR',
+  errno: 1045,
+  sql: undefined,
+  sqlState: '28000',
+  sqlMessage: "Access denied for user 'root'@'localhost' (using password: NO)"
+}
