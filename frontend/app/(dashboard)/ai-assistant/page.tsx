@@ -6,7 +6,7 @@ import { Send, Bot, Loader2, Sparkles, BookOpen, Lightbulb, HelpCircle } from 'l
 interface Message { role: 'user' | 'assistant'; content: string; }
 
 // Backend URL
-const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3001/api';
+const API_URL = process.env.NEXT_PUBLIC_API_URL || 'https://learn-hub-api.onrender.com/api';
 
 const EXAMPLE_PROMPTS = [
   { icon: BookOpen, text: 'Explain machine learning in simple terms' },
