@@ -6,7 +6,7 @@ import { AuthRequest } from '../../middleware/authMiddleware';
 export const updateVideoProgress = async (req: AuthRequest, res: Response, next: NextFunction): Promise<void> => {
     try {
         const { videoId } = req.params;
-        const { timestamp, completed } = req.body;
+        const { timestamp = 0, completed } = req.body;
         const userId = req.user?.userId;
 
         if (!userId) {

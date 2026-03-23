@@ -34,7 +34,7 @@ export const getProgress = () =>
   apiClient.get('/progress').then((r) => r.data);
 
 export const updateVideoProgress = (videoId: string, timestamp: number, completed: boolean) =>
-  apiClient.put(`/progress/${videoId}`, { timestamp, completed }).then((r) => r.data);
+  apiClient.post(`/progress/videos/${videoId}`, { timestamp, completed }).then((r) => r.data);
 
 // ─── Assignments ───────────────────────────────────────
 export const getAssignments = (): Promise<Assignment[]> =>
