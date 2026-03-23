@@ -5,8 +5,8 @@ import { Send, Bot, Loader2, Sparkles, BookOpen, Lightbulb, HelpCircle } from 'l
 
 interface Message { role: 'user' | 'assistant'; content: string; }
 
-const HF_API_URL = 'https://api-inference.huggingface.co/models/HuggingFaceH4/zephyr-7b-beta';
-const HF_TOKEN = process.env.NEXT_PUBLIC_HF_TOKEN || '';
+// Backend URL
+const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3001/api';
 
 const EXAMPLE_PROMPTS = [
   { icon: BookOpen, text: 'Explain machine learning in simple terms' },
@@ -15,40 +15,33 @@ const EXAMPLE_PROMPTS = [
   { icon: Sparkles, text: 'Write a Python binary search function' },
 ];
 
-async function queryHF(userMessage: string): Promise<string> {
-  if (!HF_TOKEN) {
-    await new Promise(r => setTimeout(r, 900));
-    return 'AI responses require a Hugging Face API token.\n\nAdd it to frontend/.env.local:\n  NEXT_PUBLIC_HF_TOKEN=hf_your_token_here\n\nGet a free token at: https://huggingface.co/settings/tokens';
-  }
-
+async function queryHF(userMessage: string, history: Message[]): Promise<string> {
   try {
-    const res = await fetch(HF_API_URL, {
+    const token = typeof window !== 'undefined' ? localStorage.getItem('auth_token') || localStorage.getItem('token') : '';
+    const res = await fetch(`${API_URL}/ai/chat`, {
       method: 'POST',
       headers: {
-        Authorization: 'Bearer ' + HF_TOKEN,
+        Authorization: `Bearer ${token}`,
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        inputs: 'You are an expert LMS learning assistant. Answer this student question clearly and concisely:\n\nQuestion: ' + userMessage + '\n\nAnswer:',
-        parameters: { max_new_tokens: 512, temperature: 0.7, return_full_text: false },
+        message: userMessage,
+        history: history.slice(-5) // Send the last 5 messages for context
       }),
     });
 
     if (!res.ok) {
       const err = await res.json().catch(() => ({}));
-      if (res.status === 503) return 'The AI model is warming up. Please wait 20 seconds and try again.';
       return 'AI request failed: ' + (err.error || res.statusText);
     }
 
     const data = await res.json();
-    if (Array.isArray(data) && data[0]?.generated_text) {
-      return data[0].generated_text.trim();
-    }
-    return 'Unexpected response format from AI model.';
+    return data.reply || 'Unexpected response format from backend.';
   } catch (e: any) {
     return 'Network error: ' + e.message;
   }
 }
+
 
 export default function AIAssistantPage() {
   const [messages, setMessages] = useState<Message[]>([
@@ -73,7 +66,7 @@ export default function AIAssistantPage() {
     setMessages(prev => [...prev, userMsg]);
     setLoading(true);
     try {
-      const reply = await queryHF(msg);
+      const reply = await queryHF(msg, messages);
       setMessages(prev => [...prev, { role: 'assistant', content: reply }]);
     } finally {
       setLoading(false);
@@ -93,7 +86,7 @@ export default function AIAssistantPage() {
         </div>
         <div>
           <div style={{ fontWeight: 700, color: 'var(--text-primary)', fontSize: 15 }}>AI Learning Assistant</div>
-          <div style={{ fontSize: 12, color: 'var(--text-muted)' }}>Powered by Hugging Face · zephyr-7b-beta</div>
+          <div style={{ fontSize: 12, color: 'var(--text-muted)' }}>Powered by Hugging Face · Meta-Llama-3</div>
         </div>
         <div style={{ marginLeft: 'auto' }}>
           <span className="badge badge-success">Online</span>
@@ -167,7 +160,7 @@ export default function AIAssistantPage() {
           </button>
         </div>
         <div style={{ fontSize: 11, color: 'var(--text-muted)', textAlign: 'center', marginTop: 8 }}>
-          Powered by Hugging Face · zephyr-7b-beta model
+          Powered by Hugging Face · Meta-Llama-3 model
         </div>
       </div>
 

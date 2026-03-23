@@ -9,6 +9,7 @@ import progressRoutes from './modules/progress/progressRoutes';
 import assignmentRoutes from './modules/assignments/assignmentRoutes';
 import quizRoutes from './modules/quizzes/quizRoutes';
 import userRoutes from './modules/users/userRoutes';
+import aiRoutes from './modules/ai/aiRoutes';
 import { errorHandler } from './middleware/errorHandler';
 
 const app = express();
@@ -25,6 +26,7 @@ app.use('/api/progress', progressRoutes);
 app.use('/api/assignments', assignmentRoutes);
 app.use('/api/quizzes', quizRoutes);
 app.use('/api/users', userRoutes);
+app.use('/api/ai', aiRoutes);
 
 app.get('/api/health/db', async (req, res) => {
     try {
